@@ -1,0 +1,77 @@
+[options]
+allow_bold = true
+audible_bell = false
+#bold_is_bright = true
+#cell_height_scale = 1.0
+#cell_width_scale = 1.0
+clickable_url = true
+dynamic_title = false
+font = mononoki Nerd Font Mono 14
+fullscreen = true
+icon_name = terminal
+mouse_autohide = false
+#scroll_on_output = false
+#scroll_on_keystroke = true
+scrollback_lines = 10000
+#search_wrap = true
+#urgent_on_bell = true
+hyperlinks = true
+
+browser = firefox
+cursor_blink = on
+cursor_shape = block
+
+# Hide links that are no longer valid in url select overlay mode
+#filter_unmatched_urls = true
+
+# Emit escape sequences for extra modified keys
+#modify_other_keys = false
+
+# set size hints for the window
+#size_hints = false
+
+# "off", "left" or "right"
+scrollbar = right
+geometry = 700x520
+
+[colors]
+# If both of these are unset, cursor falls back to the foreground color,
+# and cursor_foreground falls back to the background color.
+#cursor = #dcdccc
+#cursor_foreground = #dcdccc
+foreground = #d5c4a1
+foreground_bold = #d5c4a1
+background = #282a36
+
+color0 = #101010
+color8 = #434758
+color7 = #d0d0d0
+color15 = #ffffff
+
+color1 = #f07178
+color9 = #ff8b92
+
+color2 = #c3e88d
+color10 = #ddffa7
+
+color3 = #ffcb6b
+color11 = #ffe585
+
+color4 = #82aaff
+color12 = #9cc4ff
+
+color5 = #c792ea
+color13 = #e1acff
+
+color6 = #89ddff
+color14 = #a3f7ff
+
+color16 = #fe8019
+color17 = #d65d0e
+color18 = #3c3836
+color19 = #504945
+color20 = #bdae93
+color21 = #ebdbb2
+
+
+# vim: ft=dosini cms=#%s

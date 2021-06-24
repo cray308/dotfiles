@@ -1,0 +1,131 @@
+[user]
+	name = Chris Ray
+	email = cpray504@gmail.com
+[core]
+	editor = vim
+	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+	autocrlf = input
+	excludesfile = ~/.gitignore
+[web]
+	browser = firefox
+[alias]
+	a = add --all
+	ai = add -i
+	#############
+	b = branch
+	ba = branch -a
+	bd = branch -d
+	bdd = branch -D
+	br = branch -r
+	#############
+	c = commit
+	ca = commit -a
+	cm = commit -m
+	cam = commit -am
+	cem = commit --allow-empty -m
+	cd = commit --amend
+	cad = commit -a --amend
+	ced = commit --allow-empty --amend
+	#############
+	cl = clone
+	cld = clone --depth 1
+	#############
+	cp = cherry-pick
+	cpa = cherry-pick --abort
+	cpc = cherry-pick --continue
+	#############
+	d = diff
+	dp = diff --patience
+	dc = diff --cached
+	dk = diff --check
+	dck = diff --cached --check
+	#############
+	f = fetch
+	fo = fetch origin
+	fu = fetch upstream
+	#############
+	l = log --oneline
+	lg = log --oneline --graph --decorate
+	#############
+	m = merge
+	ma = merge --abort
+	mc = merge --continue
+	ms = merge --skip
+	#############
+	co = checkout
+	com = checkout master
+	cob = checkout -b
+	#############
+	ps = push
+	psf = push -f
+	psu = push -u
+	pst = push --tags
+	pso = push origin
+	psao = push --all origin
+	psfo = push -f origin
+	psuo = push -u origin
+	psom = push origin master
+	psaom = push --all origin master
+	psfom = push -f origin master
+	psuom = push -u origin master
+	#############
+	pl = pull
+	plr = pull --rebase
+	plro = pull --rebase origin
+	plrom = pull --rebase origin master
+	plo = pull origin
+	plom = pull origin master
+	plu = pull upstream
+	plum = pull upstream master
+	plrum = pull --rebase upstream master
+	#############
+	rb = rebase
+	rba = rebase --abort
+	rbc = rebase --continue
+	rbi = rebase --interactive
+	rbs = rebase --skip
+	#############
+	re = reset
+	rh = reset HEAD
+	reh = reset --hard
+	rem = reset --mixed
+	res = reset --soft
+	rehh = reset --hard HEAD
+	remh = reset --mixed HEAD
+	resh = reset --soft HEAD
+	rehom = reset --hard origin/master
+	#############
+	r = remote
+	rv = remote -v
+	rn = remote rename
+	ra = remote add
+	rao = remote add origin
+	rau = remote add upstream
+	rr = remote rm
+	rro = remote remove origin
+	rru = remote remove upstream
+	rp = remote prune
+	rpo = remote prune origin
+	rpu = remote prune upstream
+	rs = remote show
+	rso = remote show origin
+	rsu = remote show upstream
+	#############
+	rmc = rm --cached
+	rmf = rm -f
+	rmrf = rm -r -f
+	#############
+	s = status
+	sb = status -s -b
+	#############
+	sta = stash apply
+	stc = stash clear
+	std = stash drop
+	stl = stash list
+	stp = stash pop
+	sts = stash save
+	stsk = stash save -k
+	stw = stash show
+	#############
+	t = tag
+	td = tag -d
