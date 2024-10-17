@@ -222,10 +222,15 @@
     </keybind>
     <keybind key="C-A-1">
         <action name="Execute">
-            <command>chromium</command>
+            <command>pcmanfm</command>
         </action>
     </keybind>
     <keybind key="C-A-2">
+        <action name="Execute">
+            <command>chromium</command>
+        </action>
+    </keybind>
+    <keybind key="C-A-3">
         <action name="Execute">
             <command>spotify</command>
         </action>

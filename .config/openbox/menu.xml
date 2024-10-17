@@ -11,19 +11,12 @@
             <execute>termite</execute>
         </action> </item>
 
-        <item label="Spotify"> <action name="Execute">
-            <execute>spotify</execute>
-        </action> </item>
-
         <item label="Chromium"> <action name="Execute">
             <execute>chromium</execute>
         </action> </item>
 
-        <item label="Firefox"> <action name="Execute">
-            <execute>firefox</execute>
-        </action> </item>
-        <item label="Chrome"> <action name="Execute">
-            <execute>google-chrome-stable</execute>
+        <item label="Spotify"> <action name="Execute">
+            <execute>spotify</execute>
         </action> </item>
 
         <separator label="Categories"/>
@@ -34,48 +27,17 @@
                 <execute>subl</execute>
             </action> </item>
 
-			<item label="VS Code"> <action name="Execute">
-				<execute>code</execute>
-			</action> </item>
-
-			<item label="Postman"> <action name="Execute">
-					<execute>/home/chrisray/Postman-app/Postman</execute>
-			</action> </item>
+            <item label="Android Studio"> <action name="Execute">
+                <execute>android-studio</execute>
+            </action> </item>
 
         </menu>
 
         <menu id="2" label="Multimedia">
 
-            <item label="Qt V4L2 test Utility"> <action name="Execute">
-                <execute>qv4l2</execute>
-            </action> </item>
-
-            <item label="Qt V4L2 video capture utility"> <action name="Execute">
-                <execute>qvidcap</execute>
-            </action> </item>
-
-            <item label="Zoom Video Conferencing"> <action name="Execute">
-                <execute>zoom</execute>
-            </action> </item>
         </menu>
 
         <menu id="3" label="Network">
-
-            <item label="FTP"> <action name="Execute">
-                <execute>filezilla</execute>
-            </action> </item>
-
-            <item label="Mail"> <action name="Execute">
-                <execute>thunderbird</execute>
-            </action> </item>
-
-        </menu>
-
-        <menu id="4" label="Office">
-
-            <item label="PDF Viewer"><action name="Execute">
-                <execute>evince</execute>
-            </action> </item>
 
         </menu>
 
@@ -101,29 +63,11 @@
 
         <menu id="6" label="System">
 
-            <item label="pstree"> <action name="Execute">
-                <execute>termite -e pstree</execute>
-            </action> </item>
-
-            <item label="Top"> <action name="Execute">
-                <execute>termite -e top</execute>
-            </action> </item>
-
             <item label="Tint2"> <action name="Execute">
                 <execute>tint2</execute>
             </action> </item>
 
             <item label="Reconfigure OpenBox"> <action name="Reconfigure"/> </item>
-
-			<menu id="7" label="Display">
-				<item label="Extra Monitor"> <action name="Execte">
-						<command>/home/chrisray/.config/extramonitor.sh e</command>
-				</action> </item>
-
-				<item label="Single Monitor"> <action name="Execte">
-						<command>/home/chrisray/.config/extramonitor.sh d</command>
-				</action> </item>
-			</menu>
 
         </menu>
 

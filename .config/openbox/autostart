@@ -1,8 +1,8 @@
+tint2 -c ~/.config/tint2/workspace.tint2rc &
+tint2 -c ~/.config/tint2/taskbar.tint2rc &
 nitrogen --restore &
 nm-applet &
 blueman-applet &
 redshift-gtk &
 volumeicon &
 /home/chrisray/.config/start_audio.sh &
-tint2 -c ~/.config/tint2/workspace.tint2rc &
-tint2 -c ~/.config/tint2/taskbar.tint2rc &

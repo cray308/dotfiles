@@ -24,6 +24,7 @@
 	cam = commit -am
 	cem = commit --allow-empty -m
 	cd = commit --amend
+    can = commit --amend --no-edit
 	cad = commit -a --amend
 	ced = commit --allow-empty --amend
 	#############
@@ -64,6 +65,7 @@
 	psao = push --all origin
 	psfo = push -f origin
 	psuo = push -u origin
+    psn = !git push -u origin `git branch --show-current`
 	psom = push origin master
 	psaom = push --all origin master
 	psfom = push -f origin master
@@ -110,6 +112,8 @@
 	rs = remote show
 	rso = remote show origin
 	rsu = remote show upstream
+    rst = restore
+    rsts = restore --staged
 	#############
 	rmc = rm --cached
 	rmf = rm -f

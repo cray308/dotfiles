@@ -18,6 +18,7 @@ parse_git_branch() {
 export CONFIG_DIR="${HOME}/.config"
 source "${CONFIG_DIR}/.exports.sh"
 source "${CONFIG_DIR}/.aliases.sh"
+source "${CONFIG_DIR}/git-completion.bash"
 
 PS1="\[\e[38;5;8m\][\@] \[\e[38;5;1m\]\w\[\e[32m\]\$(parse_git_branch)\[\e[m\] \$ "
 export HISTFILE="${HOME}/.cache/bash/.history"
