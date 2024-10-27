@@ -5,31 +5,54 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-trap "[ -f ~/.last_dir ] && rm ~/.last_dir" EXIT
+PWD_FILE=~/.last_dir
 
-cd() {
-	builtin cd $@
-	pwd > ~/.last_dir
+cleanup() {
+    echo $PWD > $PWD_FILE
 }
+
+trap cleanup EXIT
 
 parse_git_branch() {
-	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
-export CONFIG_DIR="${HOME}/.config"
-source "${CONFIG_DIR}/.exports.sh"
-source "${CONFIG_DIR}/.aliases.sh"
-source "${CONFIG_DIR}/git-completion.bash"
 
-PS1="\[\e[38;5;8m\][\@] \[\e[38;5;1m\]\w\[\e[32m\]\$(parse_git_branch)\[\e[m\] \$ "
-export HISTFILE="${HOME}/.cache/bash/.history"
-export HISTSIZE=100
-export HISTFILESIZE=1000
-export HISTTIMEFORMAT="%h %d %H:%M"
-shopt -s histappend
-export HISTCONTROL=ignorespace:erasedups
+generate_ps1() {
+    grey="\e[38;5;8m"
+    red="\e[31m"
+    green="\e[32m"
+    reset="\e[m"
+    echo "\[$grey\] [\@] \[$red\]\w\[$green\]\$(parse_git_branch)\[$reset\]\n \$ "
+}
+
+PS1=$(generate_ps1)
+export HISTFILE=~/.cache/bash/history
+export HISTCONTROL=erasedups:ignorespace
+export HISTSIZE=1000
+export HISTFILESIZE=10000
+export HISTTIMEFORMAT='%h %d %H:%M '
 shopt -s cmdhist
+shopt -s histappend
 
-if [ -f ~/.last_dir ]; then
-	builtin cd $(cat ~/.last_dir)
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ls='ls -Al --color=auto --group-directories-first'
+alias la='ls -A --color=auto --group-directories-first'
+alias ll='ls -l --color=auto --group-directories-first'
+alias l.='ls -Al --color=auto --group-directories-first ../'
+alias l..='ls -Al --color=auto --group-directories-first ../../'
+alias df='df -h'
+alias xclip='xclip -selection clipboard'
+alias grep='grep --color=auto'
+alias psa='ps auxf'
+alias psgrep='ps aux | grep -v grep | grep -i -e VSZ -e'
+alias psmem='ps auxf | sort -nr -k 4'
+alias pscpu='ps auxf | sort -nr -k 3'
+alias jctl='journalctl -p 3 -xb'
+
+source ~/.local/bin/git-completion.bash
+
+if [ -f $PWD_FILE ]; then
+    cd $(< $PWD_FILE)
 fi
 
