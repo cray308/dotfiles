@@ -1,0 +1,101 @@
+cd
+pacman-key --init
+pacman-key --populate archlinuxarm
+timedatectl set-ntp true
+timedatectl status
+#1 will be EFI
+#2 will be swap
+#3 will be the root partition
+parted /dev/{device} -- mklabel gpt
+parted /dev/{device} -- mkpart ESP fat32 1MiB 513MiB
+parted /dev/{device} -- mkpart primary linux-swap 513MiB 2561MiB
+parted /dev/{device} -- mkpart primary 2561MiB 100%
+parted /dev/{device} -- set 1 ESP on
+mkfs.ext4 -L arch /dev/{device}{partitionPrefix}3
+mkswap -L swap /dev/{device}{partitionPrefix}2
+mkfs.fat -F 32 -n BOOT /dev/{device}{partitionPrefix}1
+mount /dev/{device}{partitionPrefix}3 /mnt
+mkdir -p /mnt/boot
+mount /dev/{device}{partitionPrefix}1 /mnt/boot
+swapon /dev/{device}{partitionPrefix}2
+pacstrap /mnt base base-devel linux linux-firmware efibootmgr openssh vim git wget curl sudo
+genfstab -U /mnt >> /mnt/etc/fstab
+#copy /tmp/before/fuse.conf into /mnt/etc/fuse.conf
+arch-chroot /mnt
+
+ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
+hwclock --systohc
+vim /etc/locale.gen
+# Find en_US.UTF-8 and uncomment, save and quit
+locale-gen
+vim /etc/hostname
+# Type linuxbox, save and quit
+vim /etc/hosts
+# Add the below lines (use tabs for spacing/alignment):
+#127.0.0.1    localhost
+#::1          localhost
+#127.0.1.1    linuxbox.localdomain    linuxbox
+passwd
+# Make the password for the root user
+useradd -m chrisray
+passwd chrisray
+# Make password
+usermod -aG wheel,audio,video,optical,storage chrisray
+visudo
+# Find line with wheel ALL=(ALL) ALL and uncomment so it starts with %
+mkinitcpio -P
+bootctl install
+pacman -S networkmanager
+systemctl enable NetworkManager
+exit
+
+mkdir -p /mnt/boot/loader
+# Copy files from git repo into /mnt/boot/loader:
+# loader.conf
+# entries/arch.conf
+# entries/archfallback.conf
+systemctl enable systemd-resolved.service --root=/mnt
+umount -R /mnt
+shutdown
+# Need to remove the ISO from storage
+
+# Share some folder in the VM settings
+# Then follow steps to install VMWare tools
+sudo pacman -S glib2-devel xmlsec
+/bin/bash {path/to/openvmtools/build.sh}
+sudo reboot
+
+# At this point, going to install a graphical environment
+# Note: If stuck at startup, press Ctrl-Alt-F6 to log in
+su
+pacman -S xorg-server xorg-xinit lightdm lightdm-gtk-greeter openbox obconf pcmanfm tint2 alacritty nitrogen libmd libbsd man-db xterm
+systemctl enable lightdm.service
+reboot
+
+# Open xterm
+# Set up ssh key, clone dotfiles repo
+# Add contents in .config directory: openbox, tint2
+# Also add files in .theme directory
+git clone https://aur.archlinux.org/mint-backgrounds-sylvia.git
+cd mint-backgrounds-sylvia
+makepkg -si
+nitrogen
+# Add directory: /usr/share/backgrounds/...
+# Set resolution to scaled
+
+sudo pacman -S unzip gnome-themes-extra breeze lxappearance noto-fonts
+sudo fc-cache
+lxappearance
+# Choose Adwaita-dark, Breeze Dark
+# Go to openbox configuration manager and choose theme for openbox
+git clone https://github.com/addy-dclxvi/openbox-theme-collections ~/.themes
+# Only keep Triste-Froly and use that one in obconf, can delete the rest
+
+# Vim plugins:
+pathogen
+gruvbox
+lightline.vim
+nerdtree
+supertab
+vim-fugitive
+
